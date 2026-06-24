@@ -2,12 +2,12 @@
 
 This project successfully culminated in a fully deployed, AI-powered web application that automates the incredibly tedious process of scouting international cosmetic brands for market expansion.
 
-## 🚀 What Was Accomplished
+## What Was Accomplished
 1.  **Automated Market Research:** We completely bypassed the manual process of Googling brands. The Apify integration acts as an automated research assistant, gathering real-time data on ingredients and prices from Google.
 2.  **Unbiased AI Evaluation:** We stripped the LLM of its tendency to "hallucinate" random scores by forcing it into a strict JSON schema. It is now forced to logically grade brands based on humid climate compatibility, viral trends, and masstige pricing.
 3.  **Professional Web Dashboard:** We transformed a raw Python terminal script into a beautifully styled Streamlit web application. 
 
-## 🖥️ How to Use the Final Tool
+## How to Use the Final Tool
 1.  Open the live web URL.
 2.  In the left sidebar, use the dropdown to select up to 5 K-Beauty brands from the curated master list.
 3.  Click the blue **"Run Evaluation"** button.
