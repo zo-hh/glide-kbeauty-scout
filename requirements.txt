@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+pandas
+google-genai
+python-dotenv
+playwright
+apify-client
+duckduckgo-search
+streamlit
