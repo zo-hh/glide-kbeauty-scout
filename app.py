@@ -134,7 +134,8 @@ if st.session_state.evaluation_completed:
             
             st.markdown(f"**📝 Analyst Justification:**\n> *{brand_data['Justification']}*")
             
-            st.markdown(f"**🌟 Hero Product:** {brand_data['Hero_Product']}  |  **💰 Price:** {brand_data['Est_Price']}")
+            price_safe = str(brand_data['Est_Price']).replace('$', r'\$')
+            st.markdown(f"**🌟 Hero Product:** {brand_data['Hero_Product']}  |  **💰 Price:** {price_safe}")
             st.markdown(f"**🧪 Key Ingredients:** {brand_data['Key_Ingredients']}")
         
         st.markdown("---")
