@@ -6,18 +6,18 @@ This project was built for analytical precision, combining live web scraping wit
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 The project is fully deployed on Streamlit Community Cloud! You can interact with the live dashboard and run AI evaluations here:
-**(Insert your Streamlit App URL here!)**
+**https://glide-kbeauty-scout-mamsfnvqwshvulzxo6su2w.streamlit.app/**
 
 ---
 
-## 📖 Deep Technical Documentation
+## Documentation
 For a very detailed, step-by-step breakdown of how the AI pipeline works, how the scores are calculated, and what each Python file does, please read the [DOCUMENTATION.md](./DOCUMENTATION.md) file included in this repository.
 
 ---
 
-## 🛠️ Project Features
+##  Project Features
 *   **Interactive Dashboard:** A sleek, custom-styled frontend built with Streamlit that permanently saves your evaluation state.
 *   **Live Web Scraping:** Uses the Apify Google Search API to dynamically pull the most recent market context, SEO descriptions, and trending data for any brand.
 *   **Groq AI Evaluation:** Passes the scraped context into a lightning-fast `llama-3.1-8b-instant` model to score the brand strictly out of 40 points (normalized to a `/10` Glide Fit Score).
@@ -26,7 +26,7 @@ For a very detailed, step-by-step breakdown of how the AI pipeline works, how th
 
 ---
 
-## 💻 Running it Locally
+## Running it Locally
 
 If you want to run the pipeline on your own computer instead of the cloud:
 
