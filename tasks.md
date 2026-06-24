@@ -1,16 +1,15 @@
-# K-Beauty MVP Pipeline Tasks
+# Glide K-Beauty Brand Scout - Task List
 
-- `[x]` **Module 1: Sourcing (Brand Discovery)**
-  - `[x]` Create Python script `sourcing.py`
-  - `[x]` Implement retailer scraping (Olive Young/YesStyle "Trending"/"New Arrivals")
-  - `[x]` Implement secondary sourcing (Reddit / Search)
-  - `[x]` Deduplicate brands and export to `brands_list.json`
-- `[x]` **Module 2: Evaluation & Scoring**
-  - `[x]` Create Python script `evaluation.py`
-  - `[x]` Setup Gemini API integration
-  - `[x]` Implement evaluation prompt based on Glide criteria
-  - `[x]` Process `brands_list.json` and output scored results
-- `[x]` **Module 3: Google Sheets Export**
-  - `[x]` Create Python script `export.py`
-  - `[x]` Setup `gspread` / Google Sheets API integration
-  - `[x]` Format and upload the ranked shortlist
+- `[x]` Research and identify ~90 prominent South Korean skincare and makeup brands.
+- `[x]` Build `sourcing.py` to interface with Apify and scrape real-time Google search context.
+- `[x]` Build `evaluation.py` to pipe context into Groq Llama 3.1 8B.
+- `[x]` Design strict LLM scoring rubric (Market Fit, Social Traction, Pricing, Innovation).
+- `[x]` Implement mathematical normalization (Total Score / 4) for the `Glide Fit Score`.
+- `[x]` Implement API rate limit handling (Mock Evaluation fallback, sleep timers).
+- `[x]` Implement web search failure handling (DuckDuckGo fallback).
+- `[x]` Develop `app.py` Streamlit Master-Detail UI (Data Table + Deep Dive reports).
+- `[x]` Fix Streamlit state bugs so the UI doesn't disappear on click.
+- `[x]` Clean UI formatting (Remove emojis, apply custom CSS, fix LaTeX math dollar sign bugs).
+- `[x]` Add "Download CSV" export functionality.
+- `[x]` Write `DOCUMENTATION.md` and `README.md`.
+- `[x]` Deploy app to Streamlit Community Cloud and inject hidden API secrets.
