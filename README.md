@@ -1,4 +1,4 @@
-# Glide K-Beauty Brand Scout 🌟
+# Glide K-Beauty Brand Scout 
 
 Welcome to the **Glide K-Beauty Brand Scout**! This is an AI-powered pipeline designed specifically to automate the scouting, evaluation, and shortlisting of South Korean beauty brands for market launch in India. 
 
