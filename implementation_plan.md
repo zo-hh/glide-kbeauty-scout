@@ -1,41 +1,28 @@
-# K-Beauty Brand Scouting Pipeline for Glide (MVP)
+# Glide K-Beauty Brand Scout - Final Implementation Plan
 
-This document outlines the revised workflow and implementation roadmap for an MVP pipeline to automatically scout, evaluate, and shortlist international K-Beauty brands for the Indian market.
+## Goal Description
+The objective of this project was to construct an end-to-end, AI-driven market intelligence pipeline to assist Glide in identifying and shortlisting South Korean beauty brands for potential launch in the Indian masstige market. The pipeline automates web scraping, qualitative market evaluation using a Large Language Model (LLM), and provides an interactive Streamlit dashboard for business analysts.
 
-## 1. Evaluation Criteria
+## Final Architecture
 
-The criteria to determine if a K-Beauty brand is a "good fit" for Glide:
+### 1. Data Sourcing (`sourcing.py`)
+*   **API Used:** Apify Google Search Scraper.
+*   **Logic:** Executes dynamic search queries (e.g., `"{brand_name} korean skincare best seller price ingredients"`) to collect real-time SEO descriptions, trending keywords, and product snippets directly from Google's first page. This circumvents the knowledge cutoff date of traditional LLMs.
 
-1.  **Market Fit & Product Relevance:** Suitable for Indian climate/skin, featuring trending hero ingredients.
-2.  **Brand Popularity & Momentum:** Strong global traction and organic demand in India.
-3.  **Pricing & Unit Economics:** "Masstige" segment (affordable-premium).
-4.  **Market Availability:** Must not already have an exclusive distribution tie-up in India.
+### 2. AI Evaluation Pipeline (`evaluation.py`)
+*   **LLM Used:** Groq Cloud `llama-3.1-8b-instant`.
+*   **Logic:** Ingests the scraped context and enforces a strict mathematical rubric. 
+*   **Metrics Evaluated:**
+    *   **Market Fit (10 pts):** Humid climate compatibility and ingredients (Centella, Niacinamide).
+    *   **Social Traction (10 pts):** Viral and trend status.
+    *   **Pricing (10 pts):** Masstige affordability ($15 - $35).
+    *   **Innovation (10 pts):** Unique formulations and scientific backing.
+*   **Score Normalization:** Computes a Total Score (/40) and divides by 4 to generate the final **Glide Fit Score (/10)**.
+*   **Fallbacks:** Implements an automated DuckDuckGo Search fallback if Apify fails, and a Mock Evaluation engine if the Groq API daily rate limit is completely exhausted.
 
-## 2. Pipeline Modules (MVP Scope)
+### 3. Interactive UI (`app.py`)
+*   **Framework:** Streamlit Community Cloud.
+*   **Logic:** Provides a clean "Master-Detail" UI. The main view is a custom-colored pandas dataframe highlighting the Glide Fit Score and Market Fit. The detail view is a "Deep Dive Report" select box that extracts the AI's 2-sentence analytical justification and the qualitative Risk Level (High/Medium/Low).
 
-We will build this MVP using **Python scripts**, making it easy to run locally, debug, and chain together. The output will be directly pushed to **Google Sheets**.
-
-### Module 1: Sourcing (Brand Discovery)
-*   **Goal:** Generate a raw list of potential K-Beauty brands.
-*   **Implementation:** A Python script that extracts a list of K-Beauty brands. For the MVP, we can scrape a popular K-Beauty retailer (like Olive Young Global) or use a curated seed list of brands extracted via Apify or standard web scraping (e.g., BeautifulSoup/Playwright).
-
-### Module 2: Evaluation & Scoring
-*   **Goal:** Filter and rank the brands based on our criteria.
-*   **Implementation:** A Python script that integrates with the **Gemini API**. It takes each brand from Module 1, optionally searches for some brief context (or uses the LLM's internal knowledge if the brand is known), and asks Gemini to assign a "Glide Launch Readiness Score" out of 100, along with a brief justification regarding Indian market fit, estimated pricing, and current availability.
-
-### Module 3: Google Sheets Export
-*   **Goal:** Generate a ranked shortlist.
-*   **Implementation:** A Python script using the `gspread` library (or `google-api-python-client`) to write the evaluated brands, their scores, and justifications into a formatted Google Sheet, sorted from highest score to lowest.
-
-## 3. Recommended Tools (MVP)
-
-*   **Language:** Python
-*   **Sourcing:** `BeautifulSoup`, `requests`, or a lightweight Playwright script (or Apify if dealing with heavy JavaScript rendering).
-*   **LLM / AI Analysis:** **Google Gemini API** (`google-generativeai` Python SDK).
-*   **Output:** **Google Sheets** API (`gspread`).
-
-## 4. Implementation Roadmap (Module by Module)
-
-*   **Phase 1: Sourcing Module.** Write the Python script to fetch a raw list of K-Beauty brands and save it to a local CSV/JSON file.
-*   **Phase 2: Evaluation Module.** Write the script to read the raw list, query the Gemini API for each brand to get a score and analysis, and save the enriched data locally.
-*   **Phase 3: Export Module.** Write the script to authenticate with Google Sheets and upload the final ranked data.
+### 4. Data Extraction (`export.py`)
+*   **Logic:** Bypasses complex Google Sheets API setups by offering a native, 1-click **Download CSV** button directly inside the Streamlit web app, allowing analysts to instantly export the AI's findings.
