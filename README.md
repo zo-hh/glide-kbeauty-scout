@@ -15,6 +15,8 @@ The project is fully deployed on Streamlit Community Cloud! You can interact wit
 ## Documentation
 For a very detailed, step-by-step breakdown of how the AI pipeline works, how the scores are calculated, and what each Python file does, please read the [DOCUMENTATION.md](./DOCUMENTATION.md) file included in this repository.
 
+Additionally, you can review the [implementation_plan.md](./implementation_plan.md) for a high-level overview of the final architecture and pipeline design.
+
 ---
 
 ##  Project Features
