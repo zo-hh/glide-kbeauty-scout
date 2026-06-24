@@ -8,3 +8,4 @@ apify-client
 duckduckgo-search
 streamlit
 groq
+matplotlib
