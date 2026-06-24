@@ -7,3 +7,4 @@ playwright
 apify-client
 duckduckgo-search
 streamlit
+groq
